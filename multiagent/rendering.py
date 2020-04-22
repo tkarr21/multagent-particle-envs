@@ -117,8 +117,8 @@ class Viewer(object):
             # was requested. (Guess Xmonad was preserving a pixel for
             # the boundary.) So we use the buffer height/width rather
             # than the requested one.
-            arr = arr.reshape(buffer.height, buffer.width, 4)
-            arr = arr[::-1,:,0:3]
+            arr = arr.reshape(buffer.height, buffer.width, 3)
+            arr = arr[::-1,:,0:2]
         self.window.flip()
         self.onetime_geoms = []
         return arr
@@ -153,8 +153,8 @@ class Viewer(object):
         image_data = pyglet.image.get_buffer_manager().get_color_buffer().get_image_data()
         self.window.flip()
         arr = np.fromstring(image_data.get_data('RGBA', image_data.width * 4), dtype=np.uint8, sep='')
-        arr = arr.reshape(self.height, self.width, 4)
-        return arr[::-1,:,0:3]
+        arr = arr.reshape(self.height, self.width, 3)
+        return arr[::-1,:,0:2]
 
 def _add_attrs(geom, attrs):
     if "color" in attrs:
