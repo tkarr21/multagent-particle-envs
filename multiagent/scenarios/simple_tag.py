@@ -11,7 +11,7 @@ class Scenario(BaseScenario):
         num_good_agents = 1
         num_adversaries = 1
         num_agents = num_adversaries + num_good_agents
-        num_landmarks = 2
+        num_landmarks = 0
         # add agents
         world.agents = [Agent() for i in range(num_agents)]
         for i, agent in enumerate(world.agents):
@@ -145,3 +145,11 @@ class Scenario(BaseScenario):
             if not other.adversary:
                 other_vel.append(other.state.p_vel)
         return np.concatenate([agent.state.p_vel] + [agent.state.p_pos] + entity_pos + other_pos + other_vel)
+    
+    def done(self, agent, world):
+        for p in range(world.dim_p):
+            x = abs(agent.state.p_pos[p])
+            if (x > 1.0):
+                return True
+
+        return False
