@@ -104,7 +104,7 @@ class Scenario(BaseScenario):
         # agents are penalized for exiting the screen, so that they can be 
         # caught by the adversaries
         def bound(x):
-            if x < 0.9:
+            if x < 0.7:
                 return 0
             if x < 1.0:
                 return (x - 0.9) * 10
