@@ -241,10 +241,10 @@ class MultiAgentEnv(gym.Env):
             # add geoms to viewer
             for viewer in self.viewers:
                 # drawing boundary for viewer
-                viewer.drawline((-1.0,1.0), (1.0,1.0))
-                viewer.drawline((1.0,1.0), (1.0,-1.0))
-                viewer.drawline((1.0,-1.0), (-1.0,-1.0))
-                viewer.drawline((-1.0,-1.0), (-1.0,1.0))
+                viewer.draw_line((-1.0,1.0), (1.0,1.0))
+                viewer.draw_line((1.0,1.0), (1.0,-1.0))
+                viewer.draw_line((1.0,-1.0), (-1.0,-1.0))
+                viewer.draw_line((-1.0,-1.0), (-1.0,1.0))
                 viewer.geoms = []
                 for geom in self.render_geoms:
                     viewer.add_geom(geom)
