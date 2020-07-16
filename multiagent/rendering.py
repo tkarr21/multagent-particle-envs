@@ -145,7 +145,7 @@ class Viewer(object):
     def draw_line(self, start, end, **attrs):
         geom = Line(start, end)
         _add_attrs(geom, attrs)
-        self.add_onetime(geom)
+        self.add_geom(geom)
         return geom
 
     def get_array(self):
